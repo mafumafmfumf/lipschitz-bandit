@@ -1,6 +1,6 @@
 import numpy as np
 
-def greedy(n, f_real, L, low, high, N):
+def lub(n, f_real, L, low, high, N):
     A=list(range(0,n-1))
     I = [int((n-1)/4), int(3*(n-1)/4)]
     R=[i for i in A if i not in I]
