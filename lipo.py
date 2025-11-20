@@ -1,5 +1,5 @@
 import numpy as np
-
+import random
 def LIPO(n, f_real, L, low, high, N):
     A=list(range(0,n-1))
     I = [int((n-1)/4), int(3*(n-1)/4)]
