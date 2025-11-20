@@ -25,8 +25,6 @@ def lub(n, f_real, L, low, high, N):
                 lb[i]=-np.inf
             else: 
                 R.append(i)
-
-        ex=[(ub[i]+lb[i])/2 for i in range(n) ]
         
         a=np.argmax(ub)
         I.append(a)           
