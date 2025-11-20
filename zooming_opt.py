@@ -1,14 +1,14 @@
 import numpy as np
 
 def zooming(n, f_real, L, low, high, N):
-    A = list(range(0, n))  # 注意：这里应该是 range(0, n)，不是 n-1
+    A = list(range(0, n))# 注意：这里应该是 range(0, n)，不是 n-1
     I = [int((n-1)/4), int(3*(n-1)/4)]  # 修正索引
     intv = [low, low + (high-low)//2, low + (high-low)//2 + 1, high]
     count = 0
     
-    while count <= N/2:
-        ub = np.zeros(n) - 100
-        lb = np.zeros(n) - 100
+    while count < N/2:
+        ub = np.zeros(n) - np.inf
+        lb = np.zeros(n) - np.inf
         ub_max = []
         count += 1
         mu_max = max([f_real[i] for i in I])
@@ -24,7 +24,7 @@ def zooming(n, f_real, L, low, high, N):
             if len(intv_new[i]) >= 3:
                 ub_max.append(max(ub[j] for j in intv_new[i]))
             else:
-                ub_max.append(-10000)
+                ub_max.append(-np.inf)
 
         if not ub_max:
             break
