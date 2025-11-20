@@ -31,4 +31,5 @@ def lub(n, f_real, L, low, high, N):
         a=np.argmax(ub)
         I.append(a)           
         R.remove(a)
-        print("mu_max=",mu_max,"a_max=",a_max, '\n')
+    
+    return mu_max

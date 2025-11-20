@@ -83,3 +83,8 @@ class DiscreteDOO:
             eval_count += 2  # 两个新评估点
 
         return self.best_x, self.best_value
+    
+def doo(n, p, L, low, high, N):
+    optimizer = DiscreteDOO(f=lambda x: np.sin(x/3)-0.5*abs(x/p-1), k=L, low=low,high=high,max_evals=N)
+    result = optimizer.optimize()
+    return result[1]
