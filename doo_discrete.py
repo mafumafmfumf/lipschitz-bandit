@@ -6,19 +6,6 @@ class DiscreteDOO:
     """一维离散点优化的 DOO 算法 (仅整数)"""
 
     def __init__(self, f, k, low, high, max_evals=30):
-        """
-        初始化离散 DOO 优化器
-
-        参数:
-        f : callable
-            目标函数 f(x)，x 为整数
-        k : float
-            Lipschitz 常数 (整数空间)
-        low, high : int
-            搜索范围 [low, high] (包含两端点)
-        max_evals : int
-            最大函数评估次数
-        """
         self.f = f
         self.k = k
         self.low = int(low)
