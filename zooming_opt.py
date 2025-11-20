@@ -36,7 +36,7 @@ def zooming(n, f_real, L, low, high, N):
         
         intv.extend([a_new_1, a_new_2])
         intv.sort()
-        
+        """""
         # 删除区间
         del_intv = []
         for i in range(len(intv)//2 - 1, -1, -1):   
@@ -46,6 +46,7 @@ def zooming(n, f_real, L, low, high, N):
                 
         for i in sorted(del_intv, reverse=True):  # 从后往前删除
             del intv[i] 
-
+        """
     print("mu_max=", mu_max, "a_max=", a_max, '\n')
+    print(I)
     return mu_max, a_max  # 建议返回结果
