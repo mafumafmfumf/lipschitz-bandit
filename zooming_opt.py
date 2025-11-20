@@ -6,7 +6,7 @@ def zooming(n, f_real, L, low, high, N):
     intv = [low, low + (high-low)//2, low + (high-low)//2 + 1, high]
     count = 0
     
-    while count < N:
+    while count <= N/2:
         ub = np.zeros(n) - 100
         lb = np.zeros(n) - 100
         ub_max = []
@@ -19,6 +19,7 @@ def zooming(n, f_real, L, low, high, N):
             lb[a] = max(f_real[i] - L * abs(a - i) for i in I)
         
         intv_new = [range(intv[2*i], intv[2*i+1]+1) for i in range(len(intv)//2)]
+     #   print(intv_new)
         for i in range(len(intv_new)):
             if len(intv_new[i]) >= 3:
                 ub_max.append(max(ub[j] for j in intv_new[i]))
@@ -32,11 +33,12 @@ def zooming(n, f_real, L, low, high, N):
         a_new_1 = (intv[2*i_new] + 3*intv[2*i_new+1]) // 4
         a_new_2 = (3*intv[2*i_new] + intv[2*i_new+1]) // 4
         I.extend([a_new_1, a_new_2])
-        I.sort()
+        intv.extend([(intv[2*i_new] + intv[2*i_new+1]) // 2, (intv[2*i_new] + intv[2*i_new+1]) // 2+1])  
         
-        intv.extend([a_new_1, a_new_2])
+          
+        I.sort()
         intv.sort()
-        """""
+
         # 删除区间
         del_intv = []
         for i in range(len(intv)//2 - 1, -1, -1):   
@@ -46,7 +48,6 @@ def zooming(n, f_real, L, low, high, N):
                 
         for i in sorted(del_intv, reverse=True):  # 从后往前删除
             del intv[i] 
-        """
-   # print("mu_max=", mu_max, "a_max=", a_max, '\n')
-    print(I)
-    return mu_max, a_max  # 建议返回结果
+
+    print("mu_max=", mu_max, "a_max=", a_max, '\n')
+    print(I,len(I))
